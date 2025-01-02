@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
-import { login, register } from '../controllers/authController';
-import baseRoutes from '../framework/baseRoute';
-import authRoutes from './authRoutes';
+import { login, register } from '../controllers/auth.controller';
+import baseRoutes from '../framework/base.route';
+import authRoutes from './auth.routes';
 
 export default async function routes(app: FastifyInstance) {
   // authentication routes
@@ -9,7 +9,7 @@ export default async function routes(app: FastifyInstance) {
   app.post('/login', login);
 
   // single route  
-  app.get('/', async (request, reply) => { reply.send({ hello: 'world' }); });
+  app.get('/single', async (request, reply) => { reply.send('This is a single routes.'); });
 
   // CRUD routes
   baseRoutes(app, 'todo', 'todoController');

@@ -15,8 +15,8 @@ export default class BaseController {
     apiLog.info('Fetching all records from path: ' + request.url);
     try {
       // Destructure query parameters
-      type Tquery = { sort?: string; page?: number; limit?: number; filters: string };
-      let { sort, page = 1, limit = 25, filters } = request.query as Tquery;
+      type TQuery = { sort?: string; page?: number; limit?: number; filters: string };
+      let { sort, page = 1, limit = 25, filters } = request.query as TQuery;
 
       // Manage limit
       limit = limit > 100 ? 100 : limit;
@@ -80,8 +80,20 @@ export default class BaseController {
     }
   }
 
-  // Create a new record
+  // Shared details to create a new record
   async create(request: FastifyRequest, reply: FastifyReply) {
+    apiLog.info('Creating a new record from path: ' + request.url);
+    try {
+      const data = {};
+      reply.send({ data });
+    } catch (err) {
+      apiLog.error('Failed to create a new record from path: ' + request.url + ' Error: ' + JSON.stringify(err));
+      reply.status(500).send({ error: 'Failed to create record' });
+    }
+  }
+
+  // store a new record
+  async store(request: FastifyRequest, reply: FastifyReply) {
     apiLog.info('Creating a new record from path: ' + request.url);
     try {
       const newRecord = await this.services.create(request.body);
@@ -89,6 +101,19 @@ export default class BaseController {
     } catch (err) {
       apiLog.error('Failed to create a new record from path: ' + request.url + ' Error: ' + JSON.stringify(err));
       reply.status(500).send({ error: 'Failed to create record' });
+    }
+  }
+
+  // Shared details to edit a record
+  async edit(request: FastifyRequest, reply: FastifyReply) {
+    const { id } = request.params as { id: string };
+    apiLog.info('Editing record by ID: ' + id + ' from path: ' + request.url);
+    try {
+      const data = {};
+      reply.send({ data });
+    } catch (err) {
+      apiLog.error('Failed to edit record by ID: ' + id + ' from path: ' + request.url + ' Error: ' + JSON.stringify(err));
+      reply.status(500).send({ error: 'Failed to edit record' });
     }
   }
 

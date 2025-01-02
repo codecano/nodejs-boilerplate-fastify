@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { FastifyRequest, FastifyReply, HookHandlerDoneFunction } from 'fastify';
-import userService from '../services/userService';
+import userService from '../services/user.service';
 
 interface JwtPayload { id: string; }
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';

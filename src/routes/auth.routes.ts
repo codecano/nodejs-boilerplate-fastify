@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
-import { isAuth } from "../middlewares/authMiddleware";
-import baseRoutes from "../framework/baseRoute";
+import { isAuth } from "../middlewares/auth.middleware";
+import baseRoutes from "../framework/base.route";
 
 export default async function authRoutes(app: FastifyInstance) {
   app.register(async (authApp) => {

@@ -20,23 +20,19 @@ const modelDir: string = path.join(__dirname, '../../models');
 
 // Templates for the files
 const controllerTemplate: string = `
-import BaseController from '../framework/baseController';
-import { ${moduleNameCap}Model } from '../models/${moduleName}Model';
-import ${moduleNameCap}Service from '../services/${moduleName}Service';\n
+import BaseController from '../framework/base.controller';
+import { ${moduleNameCap}Model } from '../models/${moduleName}.model';
+import ${moduleNameCap}Service from '../services/${moduleName}.service';\n
 class ${moduleNameCap}Controller extends BaseController {
-  constructor() {
-    super(${moduleNameCap}Model, ${moduleNameCap}Service);
-  }
+  constructor() { super(${moduleNameCap}Model, ${moduleNameCap}Service); }
 }\n
 export default new ${moduleNameCap}Controller();`;
 
 const serviceTemplate: string = `
-import BaseService from '../framework/baseService';
-import { ${moduleNameCap}Model } from '../models/${moduleName}Model';\n
+import BaseService from '../framework/base.service';
+import { ${moduleNameCap}Model } from '../models/${moduleName}.model';\n
 class ${moduleNameCap}Service extends BaseService {
-  constructor() {
-    super(${moduleNameCap}Model);
-  }
+  constructor() { super(${moduleNameCap}Model); }
 }\n
 export default new ${moduleNameCap}Service();`;
 
@@ -78,12 +74,12 @@ const createFile = (dir: string, fileName: string, template: string): void => {
 };
 
 // Create the files for the controller, service, and model
-createFile(controllerDir, `${moduleName}Controller.ts`, controllerTemplate);
-createFile(serviceDir, `${moduleName}Service.ts`, serviceTemplate);
-createFile(modelDir, `${moduleName}Model.ts`, modelTemplate);
+createFile(controllerDir, `${moduleName}.controller.ts`, controllerTemplate);
+createFile(serviceDir, `${moduleName}.service.ts`, serviceTemplate);
+createFile(modelDir, `${moduleName}.model.ts`, modelTemplate);
 
 // Adding the route to the routes.ts file
-const routeLine = `baseRoutes(app, '${moduleName}', '${moduleName}Controller');`;
+const routeLine = `baseRoutes(app, '${moduleName}', '${moduleName}');`;
 
 // Read the routes.ts file
 const routesFilePath = path.join(__dirname, '../../routes/routes.ts');

@@ -19,6 +19,7 @@ app.register(cors, {
 
 // Register routes with '/api' prefix
 app.register(routes, { prefix: '/api' });
+app.get('/', async (request, reply) => { reply.send("Welcome to APIs.\nYour project has been installed successfully.\nYou can now start building your application.\nHappy coding!"); });
 
 (async () => {
   try {

@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { FastifyReply, FastifyRequest } from "fastify";
-import userService from '../services/userService';
+import userService from '../services/user.service';
 import { apiLog } from "../utilities/logger";
-import { TUser } from "../models/userModel";
+import { TUser } from "../models/user.model";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 export async function register(request: FastifyRequest, reply: FastifyReply) {

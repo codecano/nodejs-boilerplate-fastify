@@ -39,23 +39,20 @@ importers:
       '@types/jsonwebtoken':
         specifier: ^9.0.7
         version: 9.0.7
-      '@types/mongoose':
-        specifier: ^5.11.97
-        version: 5.11.97
       '@types/node':
-        specifier: ^22.5.5
+        specifier: ^22.10.3
         version: 22.10.3
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
       nodemon:
-        specifier: ^3.1.7
+        specifier: ^3.1.9
         version: 3.1.9
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.10.3)(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.2
+        specifier: ^5.7.2
         version: 5.7.2
 
 packages:
@@ -116,10 +113,6 @@ packages:
 
   '@types/jsonwebtoken@9.0.7':
     resolution: {integrity: sha512-ugo316mmTYBl2g81zDFnZ7cfxlut3o+/EQdaP7J8QN2kY6lJ22hmQYCK5EHcJHbrW+dkCGSCPgbG8JtYj6qSrg==}
-
-  '@types/mongoose@5.11.97':
-    resolution: {integrity: sha512-cqwOVYT3qXyLiGw7ueU2kX9noE8DPGRY6z8eUxudhXY8NZ7DMKYAxyZkLSevGfhCX3dO/AoX5/SO9lAzfjon0Q==}
-    deprecated: Mongoose publishes its own types, so you do not need to install this package.
 
   '@types/node@22.10.3':
     resolution: {integrity: sha512-DifAyw4BkrufCILvD3ucnuN8eydUfc/C1GlyrnI+LK6543w5/L3VeVgf05o3B4fqSXP1dKYLOZsKfutpxPzZrw==}
@@ -753,19 +746,6 @@ snapshots:
   '@types/jsonwebtoken@9.0.7':
     dependencies:
       '@types/node': 22.10.3
-
-  '@types/mongoose@5.11.97':
-    dependencies:
-      mongoose: 8.9.3
-    transitivePeerDependencies:
-      - '@aws-sdk/credential-providers'
-      - '@mongodb-js/zstd'
-      - gcp-metadata
-      - kerberos
-      - mongodb-client-encryption
-      - snappy
-      - socks
-      - supports-color
 
   '@types/node@22.10.3':
     dependencies:

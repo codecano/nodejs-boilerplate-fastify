@@ -1,7 +1,5 @@
 class AuthService {
-  constructor() {
-
-  }
+  constructor() { }
 }
 
 export default new AuthService();
