@@ -7,6 +7,6 @@ export default async function authRoutes(app: FastifyInstance) {
     authApp.addHook('preHandler', isAuth); // Apply the middleware
 
     // Routes
-    baseRoutes(authApp, 'user', 'userController');
+    baseRoutes(authApp, 'user', 'user');
   });
 }

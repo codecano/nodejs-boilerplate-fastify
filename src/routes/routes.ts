@@ -12,7 +12,7 @@ export default async function routes(app: FastifyInstance) {
   app.get('/single', async (request, reply) => { reply.send('This is a single routes.'); });
 
   // CRUD routes
-  baseRoutes(app, 'todo', 'todoController');
+  baseRoutes(app, 'todo', 'todo');
 
   // Authentication routes
   await authRoutes(app);
