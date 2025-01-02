@@ -30,7 +30,7 @@ Nodejs Boilerplate Fastify is an MVC (Model-View-Controller) framework designed 
    npm install
    ```
 
-4. Create a `.env` file in the root of your project, similar to `.env.example`.
+4. Create a `.env.development` file in the root of your project, similar to `.env.example`.
 
 5. Run the development server:
    ```bash

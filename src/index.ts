@@ -7,7 +7,23 @@ import routes from './routes/routes';
 
 // Load the appropriate .env file based on NODE_ENV
 const nodeEnv = process.env.NODE_ENV || 'development';
-dotenv.config({ path: `.env.${nodeEnv}` });
+
+// check if the environment file exists
+if (!require('fs').existsSync(`.env.${nodeEnv}`)) {
+  // if the file does not exist, copy the .env.example file to the .env.development file
+  require('fs').copyFileSync('.env.example', `.env.${nodeEnv}`);
+  console.error(`It's seems the .env.${nodeEnv} file is missing. we have created a new file for you. Please update the file with your environment variables.`);
+  process.exit(1);
+} else {
+  dotenv.config({ path: `.env.${nodeEnv}` });
+  // check if required environment variables are set
+  const requiredEnv = ['NODE_ENV', 'PORT', 'DB_URI', 'JWT_SECRET', 'APP_URL'];
+  const missingEnv = requiredEnv.filter(env => !process.env[env]);
+  if (missingEnv.length) {
+    console.error(`The following environment variables are missing: ${missingEnv.join(' | ')}`);
+    process.exit(1);
+  }
+}
 
 // implement fastify
 const app = fastify({ logger: false });
